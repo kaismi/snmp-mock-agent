@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified"
+           elementFormDefault="qualified" targetNamespace="http://www.kaismi.at/mos">
+    <xs:element xmlns:mo="http://www.kaismi.at/mos" name="mos" type="mo:mosType"/>
+    <xs:complexType name="moType">
+        <xs:sequence>
+            <xs:element name="oid" type="xs:string"/>
+            <xs:element name="value" type="xs:string"/>
+            <xs:element name="access">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="READ_ONLY"/>
+                        <xs:enumeration value="WRITE_ONLY"/>
+                        <xs:enumeration value="READ_WRITE"/>
+                        <xs:enumeration value="READ_CREATE"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="mosType">
+        <xs:sequence>
+            <xs:element xmlns:mo="http://www.kaismi.at/mos" type="mo:moType" name="mo" maxOccurs="unbounded"
+                        minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
