@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mos xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.kaismi.at/mos"
+     xsi:schemaLocation="http://www.kaismi.at/mos mos.xsd">
+    <mo>
+        <oid>.1.3.6.1.4.1.29671.1.1.2.1.2.0.81.67.82.76.80.98.54</oid>
+        <value>8230_Test01_911345678_WLAN</value>
+        <access>READ_ONLY</access>
+    </mo>
+    <mo>
+        <oid>.1.3.6.1.4.1.29671.1.1.2.1.2.0.56.66.111.49.80.99.54</oid>
+        <value>LAB-2-KLU - switch</value>
+        <access>READ_ONLY</access>
+    </mo>
+</mos>
