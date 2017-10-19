@@ -2,7 +2,7 @@
 Simple XML based java snmp mock agent for testing purposes.
 
 # Usage
-Example: java -jar snmp-mock-agent-1.0-jar-with-dependencies.jar -a  127.0.0.1/9999 -f mos.xml -s true
+Example: java -jar snmp-mock-agent-1.1-SNAPSHOT-jar-with-dependencies.jar -a  127.0.0.1/9999 -f mos.xml -s true
 
 -a,--address <arg>     Required address of agent - e.g. 127.0.0.1/9999
 
