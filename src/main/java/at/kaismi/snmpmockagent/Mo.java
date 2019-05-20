@@ -1,4 +1,4 @@
-package at.kaismi;
+package at.kaismi.snmpmockagent;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

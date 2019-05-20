@@ -1,4 +1,4 @@
-package at.kaismi;
+package at.kaismi.snmpmockagent;
 
 import java.io.File;
 import java.util.List;
