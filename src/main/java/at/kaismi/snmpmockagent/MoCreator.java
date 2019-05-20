@@ -1,4 +1,4 @@
-package at.kaismi;
+package at.kaismi.snmpmockagent;
 
 import org.snmp4j.agent.mo.MOScalar;
 import org.snmp4j.smi.OID;
