@@ -1,4 +1,4 @@
-package at.kaismi;
+package at.kaismi.snmpmockagent;
 
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlType;
