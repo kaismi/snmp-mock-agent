@@ -1,13 +1,11 @@
 # snmp-mock-agent
-Simple XML based java snmp mock agent for testing purposes.
 
-# Usage
-Example: java -jar snmp-mock-agent-1.1-SNAPSHOT-jar-with-dependencies.jar -a  127.0.0.1/9999 -f mos.xml -s true
+Simple snmp mock agent for testing purposes that takes XML files as input.
 
--a,--address <arg>     Required address of agent - e.g. 127.0.0.1/9999
+```shell
+# -a Required address of agent - e.g. 127.0.0.1/9999 
+# -f Optional managed objects xml file path
+# -s Optional shellMode - default false
+java -jar snmp-mock-agent-1.1-SNAPSHOT-jar-with-dependencies.jar -a  127.0.0.1/9999 -f mos.xml -s true
+```
 
--c,--community <arg>   Optional community - default public
-
--f,--file <arg>        Optional managed objects xml file path
-
--s,--shellMode <arg>   Optional shellMode - default false
