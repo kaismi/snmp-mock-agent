@@ -1,6 +1,6 @@
 # snmp-mock-agent
 
-Simple snmp mock agent for testing purposes that takes XML files as input.
+Simple snmp mock agent for testing purposes that takes XML file as input.
 
 ```shell
 # -a Required address of agent - e.g. 127.0.0.1/9999 
