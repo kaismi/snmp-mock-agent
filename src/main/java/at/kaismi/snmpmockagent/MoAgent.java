@@ -1,16 +1,8 @@
 package at.kaismi.snmpmockagent;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.List;
-import java.util.Scanner;
-
-import javax.xml.bind.JAXBException;
-
 import org.apache.commons.cli.*;
 import org.snmp4j.TransportMapping;
 import org.snmp4j.agent.*;
-import org.snmp4j.agent.mo.MOTableRow;
 import org.snmp4j.agent.mo.snmp.*;
 import org.snmp4j.agent.security.MutableVACM;
 import org.snmp4j.mp.MPv3;
@@ -19,6 +11,12 @@ import org.snmp4j.security.SecurityModel;
 import org.snmp4j.security.USM;
 import org.snmp4j.smi.*;
 import org.snmp4j.transport.TransportMappings;
+
+import javax.xml.bind.JAXBException;
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+import java.util.Scanner;
 
 public class MoAgent extends BaseAgent {
 
@@ -38,7 +36,7 @@ public class MoAgent extends BaseAgent {
          * instance that handles the SNMP requests.
          */
         super(new File("conf.agent"), new File("bootCounter.agent"),
-            new CommandProcessor(new OctetString(MPv3.createLocalEngineID())));
+                new CommandProcessor(new OctetString(MPv3.createLocalEngineID())));
         this.address = address;
         this.community = community;
     }
@@ -46,13 +44,13 @@ public class MoAgent extends BaseAgent {
     public static void main(String[] args) throws IOException {
         Options options = new Options();
         options.addOption(Option.builder("a").longOpt("address").required()
-            .desc("Required address of agent - e.g. 127.0.0.1/9999").hasArg().build());
+                .desc("Required address of agent - e.g. 127.0.0.1/9999").hasArg().build());
         options.addOption(
-            Option.builder("c").longOpt("community").desc("Optional community - default public").hasArg().build());
+                Option.builder("c").longOpt("community").desc("Optional community - default public").hasArg().build());
         options.addOption(
-            Option.builder("f").longOpt("file").desc("Optional managed objects xml file path").hasArg().build());
+                Option.builder("f").longOpt("file").desc("Optional managed objects xml file path").hasArg().build());
         options.addOption(
-            Option.builder("s").longOpt("shellMode").desc("Optional shellMode - default false").hasArg().build());
+                Option.builder("s").longOpt("shellMode").desc("Optional shellMode - default false").hasArg().build());
 
         String address = null;
         String community = null;
@@ -142,30 +140,30 @@ public class MoAgent extends BaseAgent {
 
     @Override
     protected void addCommunities(SnmpCommunityMIB communityMIB) {
-        Variable[] com2sec = new Variable[] {
-            new OctetString(community), new OctetString(String.format("c%s", community)), // security name
-            getAgent().getContextEngineID(), // local engine ID
-            new OctetString(community), // default context name
-            new OctetString(), // transport tag
-            new Integer32(StorageType.nonVolatile), // storage type
-            new Integer32(RowStatus.active) // row status
+        Variable[] com2sec = new Variable[]{
+                new OctetString(community), new OctetString(String.format("c%s", community)), // security name
+                getAgent().getContextEngineID(), // local engine ID
+                new OctetString(community), // default context name
+                new OctetString(), // transport tag
+                new Integer32(StorageType.nonVolatile), // storage type
+                new Integer32(RowStatus.active) // row status
         };
-        MOTableRow row = communityMIB.getSnmpCommunityEntry()
-            .createRow(new OctetString(String.format("%s2%s", community, community)).toSubIndex(true), com2sec);
+        SnmpCommunityMIB.SnmpCommunityEntryRow row = communityMIB.getSnmpCommunityEntry()
+                .createRow(new OctetString(String.format("%s2%s", community, community)).toSubIndex(true), com2sec);
         communityMIB.getSnmpCommunityEntry().addRow(row);
     }
 
     @Override
     protected void addViews(VacmMIB vacm) {
         vacm.addGroup(SecurityModel.SECURITY_MODEL_SNMPv2c, new OctetString(String.format("c%s", community)),
-            new OctetString("v1v2group"), StorageType.nonVolatile);
+                new OctetString("v1v2group"), StorageType.nonVolatile);
 
         vacm.addAccess(new OctetString("v1v2group"), new OctetString(community), SecurityModel.SECURITY_MODEL_ANY,
-            SecurityLevel.NOAUTH_NOPRIV, MutableVACM.VACM_MATCH_EXACT, new OctetString("fullReadView"),
-            new OctetString("fullWriteView"), new OctetString("fullNotifyView"), StorageType.nonVolatile);
+                SecurityLevel.NOAUTH_NOPRIV, MutableVACM.VACM_MATCH_EXACT, new OctetString("fullReadView"),
+                new OctetString("fullWriteView"), new OctetString("fullNotifyView"), StorageType.nonVolatile);
 
         vacm.addViewTreeFamily(new OctetString("fullReadView"), new OID("1.3"), new OctetString(),
-            VacmMIB.vacmViewIncluded, StorageType.nonVolatile);
+                VacmMIB.vacmViewIncluded, StorageType.nonVolatile);
     }
 
     @Override
