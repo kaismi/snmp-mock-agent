@@ -29,6 +29,8 @@
     <distributionManagement>
         <repository>
             <id>github</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/kaismi/snmp-mock-agent</url>
         </repository>
     </distributionManagement>
 
