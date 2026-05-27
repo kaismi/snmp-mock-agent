@@ -1,4 +1,4 @@
-package at.kaismi.snmpmockagent;
+package at.kaismi.snmpmockagent.model;
 
 import jakarta.xml.bind.annotation.XmlEnum;
 import jakarta.xml.bind.annotation.XmlType;
