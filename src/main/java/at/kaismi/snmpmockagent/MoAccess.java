@@ -15,7 +15,7 @@ public enum MoAccess {
     READ_WRITE(MOAccessImpl.ACCESS_READ_WRITE),
     READ_CREATE(MOAccessImpl.ACCESS_READ_CREATE);
 
-    private MOAccess moAccess;
+    private final MOAccess moAccess;
 
     MoAccess(MOAccess moAccess) {
         this.moAccess = moAccess;
