@@ -12,7 +12,7 @@ File mos.xml to be prepared before start:
     </mo>
     <mo>
         <oid>.1.3.6.1.4.1.29671.1.1.2.1.2.0.73.106.119.53.100.100.54</oid>
-        <value>LAB-4-VIE - wireless</value>
+        <value>LAB-4-GRZ - wireless</value>
         <access>READ_ONLY</access>
     </mo>
     <mo>
@@ -32,7 +32,7 @@ File mos.xml to be prepared before start:
     </mo>
     <mo>
         <oid>.1.3.6.1.4.1.29671.1.1.2.1.2.0.86.84.68.72.76.98.54</oid>
-        <value>LAB-3-Linz</value>
+        <value>LAB-3-Anger</value>
         <access>READ_ONLY</access>
     </mo>
 </mos>
