@@ -1,4 +1,4 @@
-package at.kaismi.snmpmockagent;
+package at.kaismi.snmpmockagent.model;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;

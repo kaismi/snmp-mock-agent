@@ -1,5 +1,6 @@
 package at.kaismi.snmpmockagent;
 
+import at.kaismi.snmpmockagent.model.MoAccess;
 import org.snmp4j.agent.mo.MOScalar;
 import org.snmp4j.smi.OID;
 import org.snmp4j.smi.OctetString;

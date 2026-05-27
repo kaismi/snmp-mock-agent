@@ -1,5 +1,6 @@
 package at.kaismi.snmpmockagent;
 
+import at.kaismi.snmpmockagent.model.Mo;
 import org.apache.commons.cli.*;
 import org.snmp4j.TransportMapping;
 import org.snmp4j.agent.*;
@@ -41,7 +42,7 @@ public class MoAgent extends BaseAgent {
         this.community = community;
     }
 
-    public static void main(String[] args) throws IOException {
+    static void main(String[] args) throws IOException {
         Options options = new Options();
         options.addOption(Option.builder("a").longOpt("address").required()
                 .desc("Required address of agent - e.g. 127.0.0.1/9999").hasArg().build());

@@ -1,4 +1,4 @@
-package at.kaismi.snmpmockagent;
+package at.kaismi.snmpmockagent.model;
 
 import java.util.List;
 
