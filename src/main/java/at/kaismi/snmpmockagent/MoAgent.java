@@ -12,7 +12,7 @@ import org.snmp4j.security.USM;
 import org.snmp4j.smi.*;
 import org.snmp4j.transport.TransportMappings;
 
-import javax.xml.bind.JAXBException;
+import jakarta.xml.bind.JAXBException;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
