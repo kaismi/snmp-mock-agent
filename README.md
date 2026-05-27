@@ -9,10 +9,9 @@ Start application on specific port with mos.xml reference
 java -jar snmp-mock-agent-*-jar-with-dependencies.jar -a  127.0.0.1/9999 -f mos.xml -s true
 ```
 
-Example mos.xml
-
 ```xml
 <?xml version='1.0' encoding='UTF-8'?>
+<!-- File content mos.xml with mos array  -->
 <mos>
     <mo>
         <oid>.1.3.6.1.4.1.29671.1.1.2.1.2.0.56.66.111.49.80.99.54</oid>
