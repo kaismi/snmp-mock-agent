@@ -21,8 +21,8 @@ import java.util.Scanner;
 public class MoAgent extends BaseAgent {
 
     private static MoAgent moAgent = null;
-    private String address;
-    private String community;
+    private final String address;
+    private final String community;
 
     private MoAgent(String address, String community) throws IOException {
         /**
@@ -68,7 +68,7 @@ public class MoAgent extends BaseAgent {
             printHelp(options);
         }
 
-        System.out.println(String.format("Agent start with address %s and community %s", address, community));
+        System.out.printf("Agent start with address %s and community %s%n", address, community);
         moAgent = new MoAgent(address, community);
         moAgent.start();
         System.out.println("Agent started");
@@ -83,7 +83,7 @@ public class MoAgent extends BaseAgent {
             moAgent.unregisterManagedObject(moAgent.getSnmpv2MIB());
             System.out.println("Unregistered Snmpv2MIB");
 
-            System.out.println(String.format("Managed objects xml file registration - %s", file));
+            System.out.printf("Managed objects xml file registration - %s%n", file);
             moAgent.registerManagedObjects(new File(file));
             System.out.println("Managed objects xml file registered");
         }
@@ -122,7 +122,7 @@ public class MoAgent extends BaseAgent {
             try {
                 mos = moXmlParser.parse();
             } catch (JAXBException e) {
-                System.out.println(String.format("Error parsing file %s", file.getAbsolutePath()));
+                System.out.printf("Error parsing file %s%n", file.getAbsolutePath());
                 e.printStackTrace();
                 moAgent.stop();
                 System.exit(0);
@@ -130,11 +130,11 @@ public class MoAgent extends BaseAgent {
 
             MoCreator moCreator = new MoCreator();
             for (Mo mo : mos) {
-                System.out.println(String.format("Register managed object %s", mo));
+                System.out.printf("Register managed object %s%n", mo);
                 moAgent.registerManagedObject(moCreator.create(new OID(mo.getOid()), mo.getValue(), mo.getAccess()));
             }
         } else {
-            System.out.println(String.format("File %s does not exist - nothing to register", file.getAbsolutePath()));
+            System.out.printf("File %s does not exist - nothing to register%n", file.getAbsolutePath());
         }
     }
 

@@ -13,7 +13,7 @@
         <maven-compiler-plugin.version>3.15.0</maven-compiler-plugin.version>
         <maven-assembly-plugin.version>3.8.0</maven-assembly-plugin.version>
         <!-- libs version -->
-        <snmp4j-agent.version>3.8.2</snmp4j-agent.version>
+        <snmp4j-agent.version>3.8.3</snmp4j-agent.version>
         <commons-cli.version>1.11.0</commons-cli.version>
         <mail.version>2.0.3</mail.version>
         <jaxb-api.version>4.0.2</jaxb-api.version>

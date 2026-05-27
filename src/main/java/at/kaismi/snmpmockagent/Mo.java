@@ -40,10 +40,8 @@ public class Mo {
 
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder();
-        builder.append("[" + oid + "]");
-        builder.append("[" + value + "]");
-        builder.append("[" + access.name() + "]");
-        return builder.toString();
+        return "[" + oid + "]" +
+                "[" + value + "]" +
+                "[" + access.name() + "]";
     }
 }

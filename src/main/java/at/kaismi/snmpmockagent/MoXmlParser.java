@@ -9,7 +9,7 @@ import jakarta.xml.bind.Unmarshaller;
 
 class MoXmlParser {
 
-    private File file;
+    private final File file;
 
     MoXmlParser(File file) {
         this.file = file;
