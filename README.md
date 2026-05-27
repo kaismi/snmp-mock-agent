@@ -1,17 +1,9 @@
 # snmp-mock-agent
 
-Start application on specific port with mos.xml reference
-
-```shell
-# -a Required address of agent - e.g. 127.0.0.1/9999 
-# -f Optional managed objects xml file path
-# -s Optional shellMode - default false
-java -jar snmp-mock-agent-*-jar-with-dependencies.jar -a  127.0.0.1/9999 -f mos.xml -s true
-```
+File mos.xml to be prepared before start:
 
 ```xml
 <?xml version='1.0' encoding='UTF-8'?>
-<!-- File content mos.xml with mos array  -->
 <mos>
     <mo>
         <oid>.1.3.6.1.4.1.29671.1.1.2.1.2.0.56.66.111.49.80.99.54</oid>
@@ -46,3 +38,11 @@ java -jar snmp-mock-agent-*-jar-with-dependencies.jar -a  127.0.0.1/9999 -f mos.
 </mos>
 ```
 
+Start application on specific port with mos.xml reference same folder:
+
+```shell
+# -a Required address of agent - e.g. 127.0.0.1/9999 
+# -f Optional managed objects xml file path
+# -s Optional shellMode - default false
+java -jar snmp-mock-agent-*-jar-with-dependencies.jar -a  127.0.0.1/9999 -f mos.xml -s true
+```
