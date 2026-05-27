@@ -51,7 +51,6 @@ java -jar snmp-mock-agent-4.0.0-jar-with-dependencies.jar -a  127.0.0.1/9999 -f 
 
 ```shell
 ./mvnw clean package
-cd target
-java -jar snmp-mock-agent-*-jar-with-dependencies.jar -a  127.0.0.1/9999 -f test-classes/mos.xml -s true
+java -jar target/snmp-mock-agent-*-jar-with-dependencies.jar -a  127.0.0.1/9999 -f target/test-classes/mos.xml -s true
 ```
 
