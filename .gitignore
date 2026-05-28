@@ -2,3 +2,5 @@
 *.agent
 .DS_Store
 target
+cert
+.mvn/jvm.config
