@@ -25,6 +25,13 @@
         <java.version>25</java.version>
     </properties>
 
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://opensource.org/licenses/MIT</url>
+        </license>
+    </licenses>
+
     <distributionManagement>
         <repository>
             <id>github</id>
@@ -34,6 +41,15 @@
     </distributionManagement>
 
     <build>
+
+        <resources>
+            <resource>
+                <directory>${project.basedir}</directory>
+                <includes>
+                    <include>LICENSE</include>
+                </includes>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
