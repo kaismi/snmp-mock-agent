@@ -95,9 +95,9 @@ public class MoAgent extends BaseAgent {
         }
 
         if (shellMode) {
-            logger.info("Agent running - write exit to stop");
+            logger.info("Agent running - write exit or quit to stop");
             Scanner scanner = new Scanner(System.in);
-            while (!scanner.hasNext("exit")) {
+            while (!scanner.hasNext("exit") && !scanner.hasNext("quit")) {
                 scanner.nextLine();
             }
             moAgent.stop();

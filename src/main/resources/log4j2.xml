@@ -2,10 +2,16 @@
 <Configuration packages="org.apache.logging.log4j.core">
     <Appenders>
         <Console name="ConsoleAppender" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d{ISO8601} [%t] %-5p %c{1} - %m%n" />
+            <!-- Local time zone -->
+            <!-- PatternLayout pattern="%d{ISO8601} [%t] %-5p %c{1} - %m%n" /-->
+            <!-- UTC time zone -->
+            <PatternLayout pattern="%d{yyyy-MM-dd'T'HH:mm:ss.SSSXXX}{UTC} [%t] %-5p %c{1} - %m%n" />
         </Console>
         <File name="FileAppender" fileName="snmp-mock-agent.log">
-            <PatternLayout pattern="%d{ISO8601} [%t] %-5p %c{1} - %m%n" />
+            <!-- Local time zone -->
+            <!-- PatternLayout pattern="%d{ISO8601} [%t] %-5p %c{1} - %m%n" /-->
+            <!-- UTC time zone -->
+            <PatternLayout pattern="%d{yyyy-MM-dd'T'HH:mm:ss.SSSXXX}{UTC} [%t] %-5p %c{1} - %m%n" />
         </File>
     </Appenders>
     <Loggers>
