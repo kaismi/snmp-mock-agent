@@ -50,7 +50,7 @@ public class MoAgent extends BaseAgent {
     static void main(String[] args) throws IOException {
         Options options = new Options();
         options.addOption(Option.builder("a").longOpt("address").required()
-                .desc("Required address of agent - e.g. 127.0.0.1/9999").hasArg().build());
+                .desc("Required address of agent - e.g. 127.0.0.1/9999").hasArg().get());
         options.addOption(
                 Option.builder("c").longOpt("community").desc("Optional community - default public").hasArg().build());
         options.addOption(
