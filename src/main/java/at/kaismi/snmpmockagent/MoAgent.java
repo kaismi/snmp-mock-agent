@@ -2,6 +2,8 @@ package at.kaismi.snmpmockagent;
 
 import at.kaismi.snmpmockagent.model.Mo;
 import org.apache.commons.cli.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.snmp4j.TransportMapping;
 import org.snmp4j.agent.*;
 import org.snmp4j.agent.mo.snmp.*;
@@ -14,12 +16,15 @@ import org.snmp4j.smi.*;
 import org.snmp4j.transport.TransportMappings;
 
 import jakarta.xml.bind.JAXBException;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
 public class MoAgent extends BaseAgent {
+
+    private static final Logger logger = LogManager.getLogger(MoAgent.class);
 
     private static MoAgent moAgent = null;
     private final String address;
@@ -69,42 +74,41 @@ public class MoAgent extends BaseAgent {
             printHelp(options);
         }
 
-        System.out.printf("Agent start with address %s and community %s%n", address, community);
+        logger.info("Agent start with address {} and community {}", address, community);
         moAgent = new MoAgent(address, community);
         moAgent.start();
-        System.out.println("Agent started");
-        System.out.println("Registering managed objects");
+        logger.info("Agent started");
+        logger.info("Registering managed objects");
 
         if (file == null) {
-            System.out.println("No managed objects xml file path provided - use Snmpv2MIB");
+            logger.info("No managed objects xml file path provided - use Snmpv2MIB");
         } else {
             // Since BaseAgent registers some MIBs by default we need to unregister
             // one before we register our own sysDescr. Normally you would
             // override that method and register the MIBs that you need
             moAgent.unregisterManagedObject(moAgent.getSnmpv2MIB());
-            System.out.println("Unregistered Snmpv2MIB");
+            logger.info("Unregistered Snmpv2MIB");
 
-            System.out.printf("Managed objects xml file registration - %s%n", file);
+            logger.info("Managed objects xml file registration - {}", file);
             moAgent.registerManagedObjects(new File(file));
-            System.out.println("Managed objects xml file registered");
+            logger.info("Managed objects xml file registered");
         }
 
         if (shellMode) {
-            System.out.println("Agent running - write exit to stop");
+            logger.info("Agent running - write exit to stop");
             Scanner scanner = new Scanner(System.in);
             while (!scanner.hasNext("exit")) {
                 scanner.nextLine();
             }
             moAgent.stop();
-            System.out.println("Agent stopped");
+            logger.info("Agent stopped");
         } else {
             // Wait forever - until jvm is killed
             try {
                 Thread.currentThread().join();
             } catch (InterruptedException e) {
-                e.printStackTrace();
                 moAgent.stop();
-                System.out.println("Agent stopped");
+                logger.info("Agent stopped");
             }
         }
     }
@@ -123,19 +127,18 @@ public class MoAgent extends BaseAgent {
             try {
                 mos = moXmlParser.parse();
             } catch (JAXBException e) {
-                System.out.printf("Error parsing file %s%n", file.getAbsolutePath());
-                e.printStackTrace();
+                logger.error("Error parsing file {}", file.getAbsolutePath(), e);
                 moAgent.stop();
                 System.exit(0);
             }
 
             MoCreator moCreator = new MoCreator();
             for (Mo mo : mos) {
-                System.out.printf("Register managed object %s%n", mo);
+                logger.info("Register managed object {}", mo);
                 moAgent.registerManagedObject(moCreator.create(new OID(mo.getOid()), mo.getValue(), mo.getAccess()));
             }
         } else {
-            System.out.printf("File %s does not exist - nothing to register%n", file.getAbsolutePath());
+            logger.info("File {} does not exist - nothing to register {}", file.getAbsolutePath(), file.getAbsolutePath());
         }
     }
 
