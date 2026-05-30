@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration packages="org.apache.logging.log4j.core">
+    <Appenders>
+        <Console name="ConsoleAppender" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{ISO8601} [%t] %-5p %c{1} - %m%n" />
+        </Console>
+        <File name="FileAppender" fileName="snmp-mock-agent.log">
+            <PatternLayout pattern="%d{ISO8601} [%t] %-5p %c{1} - %m%n" />
+        </File>
+    </Appenders>
+    <Loggers>
+        <Logger name="at.kaismi.snmpmockagent" level="info" />
+        <Root level="info">
+            <AppenderRef ref="ConsoleAppender" />
+            <AppenderRef ref="FileAppender" />
+        </Root>
+    </Loggers>
+</Configuration>

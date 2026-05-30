@@ -1,5 +1,6 @@
 .idea
 *.agent
+*.log
 .DS_Store
 target
 cert
