@@ -18,7 +18,7 @@
         <Logger name="at.kaismi.snmpmockagent" level="info" />
         <Root level="info">
             <AppenderRef ref="ConsoleAppender" />
-            <AppenderRef ref="FileAppender" />
+            <!-- AppenderRef ref="FileAppender" /-->
         </Root>
     </Loggers>
 </Configuration>
