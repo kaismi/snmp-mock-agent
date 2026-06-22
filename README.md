@@ -1,6 +1,6 @@
 # snmp-mock-agent
 
-File mos.xml to be prepared before start:
+File mos.xml to be prepared before start for parsing:
 
 ```xml
 <?xml version='1.0' encoding='UTF-8'?>
